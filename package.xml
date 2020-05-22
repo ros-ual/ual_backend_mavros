@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ual_backend_mavros</name>
+  <version>0.0.0</version>
+  <description>The ual_backend_mavros package</description>
+
+  <maintainer email="fran.real.perez@gmail.com">Fran Real</maintainer>
+  <maintainer email="arturotorres@us.es">Arturo Torres</maintainer>
+
+  <license>TODO</license>
+
+  <!-- <url type="website">http://wiki.ros.org/ual_backend_mavros</url> -->
+
+  <author email="freal@us.es">Fran Real</author>
+  <author email="arturotorres@us.es">Arturo Torres</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>mavros</build_depend>
+  <build_depend>mavros_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>ual_core</build_depend>
+  <build_export_depend>mavros</build_export_depend>
+  <build_export_depend>mavros_msgs</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>ual_core</build_export_depend>
+  <exec_depend>mavros</exec_depend>
+  <exec_depend>mavros_msgs</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>ual_core</exec_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>
