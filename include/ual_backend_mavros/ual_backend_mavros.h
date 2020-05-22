@@ -18,16 +18,16 @@
 // OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //----------------------------------------------------------------------------------------------------------------------
-#ifndef UAV_ABSTRACTION_LAYER_BACKEND_MAVROS_H
-#define UAV_ABSTRACTION_LAYER_BACKEND_MAVROS_H
+#ifndef UAL_BACKEND_MAVROS_H
+#define UAL_BACKEND_MAVROS_H
 
 #include <thread>
 #include <vector>
 #include <Eigen/Core>
 #include <ros/ros.h>
 
-#include <uav_abstraction_layer/backend.h>
-#include <uav_abstraction_layer/posePID.h>
+#include <ual_core/backend.h>
+#include <ual_core/posePID.h>
 
 //Mavros services
 #include <mavros_msgs/CommandBool.h>
@@ -44,7 +44,7 @@
 #include <tf2_ros/static_transform_broadcaster.h>
 #include <sensor_msgs/NavSatFix.h>
 
-namespace grvc { namespace ual {
+namespace ual {
 
 class HistoryBuffer {  // TODO: template? utils?
 public:
@@ -235,6 +235,6 @@ private:
     bool calling_land_ = false;
 };
 
-}}	// namespace grvc::ual
+}	// namespace ual
 
-#endif // UAV_ABSTRACTION_LAYER_BACKEND_MAVROS_H
+#endif // UAL_BACKEND_MAVROS_H

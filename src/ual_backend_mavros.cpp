@@ -26,7 +26,7 @@
 #include <ros/package.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <tf2/LinearMath/Quaternion.h>
-#include <uav_abstraction_layer/geographic_to_cartesian.h>
+#include <ual_core/geographic_to_cartesian.h>
 #include <mavros_msgs/ParamGet.h>
 #include <mavros_msgs/CommandTOL.h>
 #include <mavros_msgs/VehicleInfoGet.h>
@@ -39,7 +39,7 @@
 #define FIRMWARE_VERSION_TYPE_OFFICIAL 255 /* official stable release | */
 #define FIRMWARE_VERSION_TYPE_ENUM_END 256 /*  | */
 
-namespace grvc { namespace ual {
+namespace ual {
 
 BackendMavros::BackendMavros()
     : Backend(), tf_listener_(tf_buffer_)
@@ -250,16 +250,16 @@ void BackendMavros::offboardThreadLoop(){
     }
 }
 
-grvc::ual::State BackendMavros::guessState() {
+ual::State BackendMavros::guessState() {
     // Sequentially checks allow state deduction
-    if (!this->isReady()) { return uav_abstraction_layer::State::UNINITIALIZED; }
-    if (!this->mavros_state_.armed) { return uav_abstraction_layer::State::LANDED_DISARMED; }
+    if (!this->isReady()) { return ual_core::State::UNINITIALIZED; }
+    if (!this->mavros_state_.armed) { return ual_core::State::LANDED_DISARMED; }
     if (this->mavros_extended_state_.landed_state == mavros_msgs::ExtendedState::LANDED_STATE_ON_GROUND ||
-        this->mavros_state_.system_status == 3) { return uav_abstraction_layer::State::LANDED_ARMED; }  // TODO(franreal): Use LANDED_STATE_IN_AIR instead?
-    if (this->calling_takeoff_) { return uav_abstraction_layer::State::TAKING_OFF; }
-    if (this->calling_land_) { return uav_abstraction_layer::State::LANDING; }
-    if (this->mavros_state_.mode == "OFFBOARD" || this->mavros_state_.mode == "GUIDED" || this->mavros_state_.mode == "GUIDED_NOGPS") { return uav_abstraction_layer::State::FLYING_AUTO; }
-    return uav_abstraction_layer::State::FLYING_MANUAL;
+        this->mavros_state_.system_status == 3) { return ual_core::State::LANDED_ARMED; }  // TODO(franreal): Use LANDED_STATE_IN_AIR instead?
+    if (this->calling_takeoff_) { return ual_core::State::TAKING_OFF; }
+    if (this->calling_land_) { return ual_core::State::LANDING; }
+    if (this->mavros_state_.mode == "OFFBOARD" || this->mavros_state_.mode == "GUIDED" || this->mavros_state_.mode == "GUIDED_NOGPS") { return ual_core::State::FLYING_AUTO; }
+    return ual_core::State::FLYING_MANUAL;
 }
 
 void BackendMavros::setFlightMode(const std::string& _flight_mode) {
@@ -1146,4 +1146,4 @@ void BackendMavros::initPosePID() {
     }
 }
 
-}}	// namespace grvc::ual
+}	// namespace ual

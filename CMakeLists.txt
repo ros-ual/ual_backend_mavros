@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   mavros
   mavros_msgs
   roscpp
-  uav_abstraction_layer
+  ual_core
 )
 
 ## System dependencies are found with CMake's conventions
@@ -122,7 +122,7 @@ endif()
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ual_backend_mavros
-  CATKIN_DEPENDS mavros mavros_msgs roscpp uav_abstraction_layer
+  CATKIN_DEPENDS mavros mavros_msgs roscpp ual_core
 #  DEPENDS system_lib
 )
 
